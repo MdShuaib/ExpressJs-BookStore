@@ -70,3 +70,13 @@ module.exports.updateBookById = (id, book, options, callback) => {
 	
 	Book.findOneAndUpdate(queryId, objForUpdate, options, callback)
 }
+
+
+// delete Books by id
+module.exports.deleteBookById = (id, callback) => {
+	
+	var queryId = {_id: id}
+	
+	Book.remove(queryId, callback)
+}
+
