@@ -3,6 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+
+app.set('view engine', 'pug');
 app.use(bodyParser.json());
 
 Genre =  require("./models/genre");
@@ -14,7 +16,7 @@ var db = mongoose.connection;
 
 /*Default route '/' */
 app.get('/', (req, res) => {
-	res.send('Hello Api');
+	res.render('index', { title: 'Bookstore', message: 'Hello there!' })
 });
 
 
