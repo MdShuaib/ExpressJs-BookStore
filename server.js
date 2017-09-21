@@ -53,6 +53,17 @@ app.put('/api/genres/:_id', (req, res) => {
 	});
 });
 
+app.delete('/api/genres/:_id', (req, res) => {
+	var queryId = req.params._id;
+	Genre.deleteGenreById(queryId, function(err, book) {
+		if(err) {
+			throw err;
+		}
+		res.json(book);
+	});
+});
+
+
 
 /* Books routes here...*/
 app.get('/api/books', (req, res) => {
@@ -99,6 +110,17 @@ app.put('/api/books/:_id', (req, res) => {
 		res.json(book);
 	});
 });
+
+app.delete('/api/books/:_id', (req, res) => {
+	var queryId = req.params._id;
+	Book.deleteBookById(queryId, function(err, book) {
+		if(err) {
+			throw err;
+		}
+		res.json(book);
+	});
+});
+
 
 app.listen(3000);
 console.log("Runnning on port 3000...")
