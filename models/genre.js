@@ -33,3 +33,13 @@ module.exports.updateGenre = (id, genre, options, callback) => {
 
 	Genre.findOneAndUpdate(queryId, updateData, options, callback);
 }
+
+
+// delete Grenre by id
+module.exports.deleteGenreById = (id, callback) => {
+	
+	var queryId = {_id: id}
+	
+	Genre.remove(queryId, callback)
+}
+
