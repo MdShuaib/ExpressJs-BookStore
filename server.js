@@ -60,5 +60,16 @@ app.get('/api/books/:_id', (req, res) => {
 });
 
 
+app.post('/api/books', (req, res) => {
+	var book = req.body;
+	Book.addBook(book, function(err, book) {
+		if(err) {
+			throw err;
+			console.log(err)
+		}
+		res.json(book);
+	});
+});
+
 app.listen(3000);
 console.log("Runnning on port 3000...")
