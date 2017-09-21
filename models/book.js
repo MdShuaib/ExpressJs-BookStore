@@ -55,15 +55,18 @@ module.exports.addBook = (book, callback) => {
 
 // update Books by id
 module.exports.updateBookById = (id, book, options, callback) => {
+	var objForUpdate = {};
+	if (book.title) objForUpdate.title = book.title;
+	if (book.author) objForUpdate.author = book.author;
+	if (book.genre) objForUpdate.genre = book.genre;
+	if (book.publisher) objForUpdate.publisher = book.publisher;
+	if (book.description) objForUpdate.description = book.description;
+	if (book.image_url) objForUpdate.image_url = book.image_url;
+	if (book.buy_url) objForUpdate.buy_url = book.buy_url;
+	
+	var setObj = { objForUpdate }
+	console.log("Session: %j", setObj);
 	var queryId = {_id: id}
-	var updatedData = {
-		title: book.title,
-		author: book.author,
-		genre:book.genre,
-		description: book.description,
-		publisher : book.publisher,
-		image_url:book.image_url,
-		buy_url:book.buy_url
-	}
-	Book.findOneAndUpdate(queryId, updatedData, options, callback)
+	
+	Book.findOneAndUpdate(queryId, objForUpdate, options, callback)
 }
