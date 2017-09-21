@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies":{
-    "express":"*",
-    "body-parser":"*",
-    "mongoose":"*"
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "mongoose": "*",
+    "pug": "^2.0.0-rc.4"
   },
   "repository": {
     "type": "git",
