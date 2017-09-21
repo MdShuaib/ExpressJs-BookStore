@@ -11,10 +11,14 @@ Book =  require("./models/book");
 mongoose.connect('mongodb://localhost/bookstore');
 var db = mongoose.connection;
 
+
+/*Default route '/' */
 app.get('/', (req, res) => {
 	res.send('Hello Api');
 });
 
+
+/* Genre routes here */
 app.get('/api/genres', (req, res) => {
 	Genre.getGenres(function(err, genres) {
 		if(err) {
@@ -38,6 +42,19 @@ app.post('/api/genres', (req, res) => {
 });
 
 
+app.put('/api/genres/:_id', (req, res) => {
+	var genreId = req.params._id;
+	var queryData = req.body;
+	Genre.updateGenre(genreId, queryData, {},  function(err, genre) {
+		if(err) {
+			throw err;
+		}
+		res.json(genre);
+	});
+});
+
+
+/* Books routes here...*/
 app.get('/api/books', (req, res) => {
 	Book.getBooks(function(err, books) {
 		if(err) {
